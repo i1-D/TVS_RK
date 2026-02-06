@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - RK TVS Authorized Service Centre</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header (loaded from partial) -->
+  <div data-include="partials/header.html"></div>
+
+  <!-- Contact Us Section -->
+  <main class="contact-section">
+    <div class="contact-grid" aria-hidden="true"></div>
+    <div class="contact-inner">
+      <p class="contact-eyebrow">Have a query?</p>
+      <h1 class="contact-title">Contact Us</h1>
+      <p class="contact-lead">What can we do for you?</p>
+
+      <form class="contact-form" action="#" method="post" novalidate>
+        <div class="contact-form-row">
+          <label class="contact-label">
+            <span class="contact-label-text">Your Name</span>
+            <input type="text" name="name" class="contact-input" placeholder=" " required autocomplete="name">
+          </label>
+          <label class="contact-label">
+            <span class="contact-label-text">Your Email</span>
+            <input type="email" name="email" class="contact-input" placeholder=" " required autocomplete="email">
+          </label>
+        </div>
+        <label class="contact-label contact-label--full">
+          <span class="contact-label-text">Contact Details</span>
+          <textarea name="details" class="contact-input contact-input--textarea" placeholder=" " rows="4" required></textarea>
+        </label>
+        <button type="submit" class="contact-submit">Submit</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer (loaded from partial) -->
+  <div data-include="partials/footer.html"></div>
+
+  <script src="include.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

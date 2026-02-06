@@ -1,0 +1,15 @@
+{
+  "name": "tvs-rk",
+  "version": "1.0.0",
+  "description": "RK TVS Authorized Service Centre website",
+  "scripts": {
+    "start": "serve",
+    "dev": "serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "serve": "^14.2.5"
+  }
+}
