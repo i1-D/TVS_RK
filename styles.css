@@ -8,6 +8,7 @@
   --color-gray: #6b6b6b;
   --color-gray-light: #e8e8e8;
   --color-radial-gradient: radial-gradient(103.87% 59.07% at 72.4% 52.41%, #1F1E1E 12.26%, #0B0A0B 53.37%, #070707 69.23%, #010101 100%);
+  --color-radial-footer : radial-gradient(30% 80% at 20% 50%, #1F1E1E 8.38%, #0B0A0B 53.37%, #070707 69.23%, #010101 100%);
   --font: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   --max-width: 1280px;
   --header-height: 80px;
@@ -82,7 +83,7 @@ ul {
 
 .header-inner {
   margin: 0 auto;
-  padding: 0 var(--padding-horizontal);
+  padding: 0 80px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -822,22 +823,18 @@ a.logo {
 /* ===== Footer ===== */
 .footer {
   position: relative;
-  padding: 60px 24px 24px;
-  background: var(--color-dark);
+  padding: 120px 80px 20px;
+  background: var(--color-radial-footer);
   color: var(--color-white);
 }
 
 .footer-inner {
   position: relative;
-  z-index: 1;
-  max-width: var(--max-width);
-  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr;
-  gap: 48px;
-  align-items: start;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 80px;
+  align-items: center;
   padding-bottom: 40px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .footer-logo-link {
@@ -847,23 +844,27 @@ a.logo {
 
 .footer-logo-img {
   display: block;
-  height: 55px;
+  height: 7.813vw;
   width: auto;
   object-fit: contain;
 }
 
 .footer-contact p {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.9);
-  margin-bottom: 12px;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  letter-spacing: 0.24px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 24px;
 }
 
 .footer-label {
-  font-size: 0.7rem;
-  font-weight: 700;
   color: var(--color-red);
-  letter-spacing: 0.1em;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.5; 
+  letter-spacing: -0.2px;
+  text-transform: uppercase;
 }
 
 .footer-nav {
@@ -873,10 +874,13 @@ a.logo {
 }
 
 .footer-nav a {
-  font-size: 0.95rem;
-  font-weight: 500;
   color: var(--color-white);
   transition: color 0.2s;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5; 
+  letter-spacing: -0.24px;
 }
 
 .footer-nav a:hover {
@@ -910,9 +914,14 @@ a.logo {
   position: relative;
   z-index: 1;
   text-align: center;
-  font-size: 0.8rem;
   color: var(--color-gray);
   margin-top: 24px;
+
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: -0.16px;
 }
 
 /* ===== Contact Us page ===== */
