@@ -1,7 +1,8 @@
 /* ===== Variables ===== */
 :root {
-  --color-dark: #070707;
+  --color-dark: #010101;
   --color-white: #ffffff;
+  --color-primary: #C1272C; 
   --color-red: #e7262d;
   --color-red-dark: #c41e24;
   --color-yellow: #f5c518;
@@ -139,7 +140,7 @@ a.logo {
 }
 
 .nav-link.active {
-  background: var(--color-red);
+  background: var(--color-primary);
   color: var(--color-white);
 }
 
@@ -162,7 +163,7 @@ a.logo {
 .section-num {
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--color-red);
+  color: var(--color-primary);
   letter-spacing: 0.05em;
 }
 
@@ -170,7 +171,7 @@ a.logo {
   width: 2px;
   flex: 1;
   min-height: 60px;
-  background: var(--color-red);
+  background: var(--color-primary);
 }
 
 /* ===== Hero ===== */
@@ -362,7 +363,7 @@ a.logo {
 }
 
 .btn--primary {
-  background: var(--color-red);
+  background: var(--color-primary);
   color: var(--color-white);
 }
 
@@ -384,7 +385,7 @@ a.logo {
 }
 
 .offer-section-indicator .section-num {
-  color: var(--color-red);
+  color: var(--color-primary);
 }
 
 .offer-inner {
@@ -482,7 +483,7 @@ a.logo {
   right: 0;
   width: 55%;
   height: 100%;
-  background: var(--color-red);
+  background: var(--color-primary);
   clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
   z-index: 0;
 }
@@ -500,7 +501,7 @@ a.logo {
 }
 
 .services-section-indicator .section-num {
-  color: var(--color-red);
+  color: var(--color-primary);
 }
 
 .services-left {
@@ -520,7 +521,7 @@ a.logo {
 }
 
 .services-list strong {
-  color: var(--color-red);
+  color: var(--color-primary);
   font-weight: 700;
 }
 
@@ -583,14 +584,14 @@ a.logo {
 }
 
 .collection-section-indicator .section-num {
-  color: var(--color-red);
+  color: var(--color-primary);
 }
 
 .collection-title {
   text-align: center;
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 800;
-  color: var(--color-red);
+  color: var(--color-primary);
   margin-bottom: 48px;
   letter-spacing: -0.02em;
 }
@@ -619,10 +620,98 @@ a.logo {
 
 .carousel-btn:hover {
   background: var(--color-red);
-  border-color: var(--color-red);
+  border-color: var(--color-primary);
   color: var(--color-white);
 }
 
+/* ----- Collection slider: scroll-snap horizontal ----- */
+.carousel--collection {
+  max-width: 100%;
+  padding: 0 16px;
+  gap: 12px;
+}
+
+.carousel--collection .carousel-viewport {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 24px 0;
+}
+
+.carousel--collection .carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel--collection .carousel-viewport:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+.carousel--collection .carousel-track {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 20px;
+  min-height: 280px;
+  padding: 0 20px;
+  width: max-content;
+}
+
+.carousel--collection .carousel-slide {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  width: 220px;
+  min-width: 220px;
+  margin: 0;
+  flex-shrink: 0;
+  position: relative;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transform: scale(0.92);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.carousel--collection .carousel-slide:hover {
+  transform: scale(0.96);
+}
+
+.carousel--collection .carousel-slide--active {
+  transform: scale(1.05);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.carousel--collection .carousel-slide--active:hover {
+  transform: scale(1.06);
+}
+
+.carousel--collection .carousel-slide img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.carousel--collection .carousel-caption {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--color-white);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+/* Legacy carousel track/slide (for parts etc.) - base */
 .carousel-track {
   display: flex;
   align-items: center;
@@ -633,35 +722,8 @@ a.logo {
 }
 
 .carousel-slide {
-  width: 180px;
-  margin-left: -30px;
   flex-shrink: 0;
   position: relative;
-  transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
-  transform: rotate(-6deg) translateY(8px);
-  opacity: 0.75;
-  filter: grayscale(0.15);
-}
-
-.carousel-slide:first-child {
-  margin-left: 0;
-}
-
-.carousel-slide--active {
-  width: 260px;
-  margin-left: -30px;
-  z-index: 2;
-  transform: rotate(0) scale(1.08);
-  opacity: 1;
-  filter: none;
-}
-
-.carousel-slide--prev {
-  transform: rotate(-6deg) translateY(8px);
-}
-
-.carousel-slide--next {
-  transform: rotate(6deg) translateY(8px);
 }
 
 .carousel-slide img {
@@ -719,7 +781,7 @@ a.logo {
 .parts-title {
   font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: 800;
-  color: var(--color-red);
+  color: var(--color-primary);
   letter-spacing: -0.02em;
   margin-bottom: 48px;
   text-align: left;
@@ -740,7 +802,7 @@ a.logo {
 
 .carousel--parts .carousel-btn:hover {
   background: var(--color-red);
-  border-color: var(--color-red);
+  border-color: var(--color-primary);
 }
 
 .carousel--parts .carousel-track {
@@ -804,7 +866,7 @@ a.logo {
   height: 10px;
   border-radius: 50%;
   border: none;
-  background: var(--color-red);
+  background: var(--color-primary);
   opacity: 0.4;
   cursor: pointer;
   padding: 0;
@@ -859,7 +921,7 @@ a.logo {
 }
 
 .footer-label {
-  color: var(--color-red);
+  color: var(--color-primary);
   font-size: 1.2rem;
   font-weight: 500;
   line-height: 1.5; 
@@ -927,8 +989,7 @@ a.logo {
 /* ===== Contact Us page ===== */
 .contact-section {
   position: relative;
-  min-height: calc(100vh - var(--header-height));
-  padding: calc(var(--header-height) + 48px) 24px 80px;
+  padding: calc(var(--header-height) + 48px) var(--padding-horizontal) 80px;
   background: var(--color-gray-light);
   color: var(--color-dark);
 }
@@ -946,23 +1007,19 @@ a.logo {
 .contact-inner {
   position: relative;
   z-index: 1;
-  max-width: 640px;
-  margin: 0 auto;
 }
 
-.contact-eyebrow {
-  font-size: 0.95rem;
-  font-weight: 500;
+.contact-eyebrow, .contact-title {
   color: var(--color-gray);
-  margin-bottom: 8px;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5; 
+  letter-spacing: 0.6px;
 }
 
 .contact-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
   color: var(--color-dark);
-  margin-bottom: 8px;
 }
 
 .contact-lead {
@@ -974,21 +1031,18 @@ a.logo {
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 48px;
+  margin-top: 60px;
 }
 
 .contact-form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 48px;
 }
 
 .contact-label {
   display: block;
-}
-
-.contact-label--full {
-  grid-column: 1 / -1;
 }
 
 .contact-label-text {
@@ -1007,7 +1061,7 @@ a.logo {
   color: var(--color-dark);
   background: transparent;
   border: none;
-  border-bottom: 2px solid var(--color-gray);
+  border-bottom: 2px solid #9f9f9f;
   padding: 10px 0;
   transition: border-color 0.2s, outline 0.2s;
 }
@@ -1018,12 +1072,7 @@ a.logo {
 
 .contact-input:focus {
   outline: none;
-  border-bottom-color: var(--color-red);
-}
-
-.contact-input--textarea {
-  resize: vertical;
-  min-height: 100px;
+  border-bottom-color: var(--color-primary);
 }
 
 .contact-submit {
@@ -1033,9 +1082,9 @@ a.logo {
   font-size: 1rem;
   font-weight: 600;
   color: var(--color-white);
-  background: var(--color-red);
+  background: var(--color-primary);
   border: none;
-  border-radius: 6px;
+  border-radius: 32px;
   cursor: pointer;
   transition: background 0.2s;
 }
@@ -1167,18 +1216,19 @@ a.logo {
     padding-left: 24px;
   }
 
-  .collection .carousel-track {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
+  .carousel--collection .carousel-track {
+    gap: 14px;
+    min-height: 260px;
+    padding: 0 12px;
   }
 
-  .collection .carousel-slide {
-    width: 160px;
+  .carousel--collection .carousel-slide {
+    width: 180px;
+    min-width: 180px;
   }
 
-  .collection .carousel-slide--active {
-    width: 200px;
+  .carousel--collection .carousel-slide img {
+    height: 200px;
   }
 
   .carousel--parts .carousel-track {

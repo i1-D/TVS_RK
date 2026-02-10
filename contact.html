@@ -19,9 +19,12 @@
     <div class="contact-inner">
       <p class="contact-eyebrow">Have a query?</p>
       <h1 class="contact-title">Contact Us</h1>
-      <p class="contact-lead">What can we do for you?</p>
 
       <form class="contact-form" action="#" method="post" novalidate>
+        <label class="contact-label ">
+          <span class="contact-label-text">What can we do for you?</span>
+          <input name="description" class="contact-input" placeholder=" " required></input>
+        </label>
         <div class="contact-form-row">
           <label class="contact-label">
             <span class="contact-label-text">Your Name</span>
@@ -32,10 +35,12 @@
             <input type="email" name="email" class="contact-input" placeholder=" " required autocomplete="email">
           </label>
         </div>
-        <label class="contact-label contact-label--full">
-          <span class="contact-label-text">Contact Details</span>
-          <textarea name="details" class="contact-input contact-input--textarea" placeholder=" " rows="4" required></textarea>
-        </label>
+        <div class="contact-form-row">
+          <label class="contact-label">
+            <span class="contact-label-text">Contact Details</span>
+            <input name="details" class="contact-input contact-input" placeholder=" " required></input>
+          </label>
+        </div>
         <button type="submit" class="contact-submit">Submit</button>
       </form>
     </div>
