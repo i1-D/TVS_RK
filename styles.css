@@ -8,7 +8,7 @@
   --color-yellow: #f5c518;
   --color-gray: #6b6b6b;
   --color-gray-light: #e8e8e8;
-  --color-radial-gradient: radial-gradient(103.87% 59.07% at 72.4% 52.41%, #1F1E1E 12.26%, #0B0A0B 53.37%, #070707 69.23%, #010101 100%);
+  --color-radial-gradient: radial-gradient(60% 60% at 60% 60%, #1F1E1E 12.26%, #0B0A0B 53.37%, #070707 69.23%, #010101 100%);
   --color-radial-footer : radial-gradient(30% 80% at 20% 50%, #1F1E1E 8.38%, #0B0A0B 53.37%, #070707 69.23%, #010101 100%);
   --font: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   --max-width: 1280px;
@@ -205,7 +205,6 @@ a.logo {
   line-height: 1.5;
   letter-spacing: 0.6px;
   color: var(--color-white);
-  max-width: 620px;
 }
 
 .hero-rating {
@@ -239,7 +238,6 @@ a.logo {
 }
 
 .hero-image-wrap {
-  position: relative;
   z-index: 1;
   max-width: 62.5vw;
 }
@@ -251,7 +249,7 @@ a.logo {
 
 /* Services page hero variant */
 .hero--services {
-  min-height: 75vh;
+  background: var(--color-radial-footer);
 }
 
 .hero-title--lines {
@@ -271,24 +269,15 @@ a.logo {
 }
 
 .hero-visual--services {
-  position: relative;
-}
-
-.hero-glow {
   position: absolute;
-  width: 120%;
-  height: 80%;
-  left: -10%;
-  top: 10%;
-  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(231, 38, 45, 0.35) 0%, rgba(231, 38, 45, 0.08) 50%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
+  bottom: -14.583vw;
+  right: 0;
 }
 
 .hero-visual--services .hero-image-wrap {
   position: relative;
   z-index: 1;
-  max-width: 480px;
+  max-width: 61.25vw;
 }
 
 .hero-wave {
@@ -305,18 +294,11 @@ a.logo {
 
 /* Spare Parts page hero */
 .hero--spare-parts {
-  min-height: 75vh;
   padding-top: calc(var(--header-height) + 60px);
   justify-content: center;
   text-align: center;
-}
-
-.hero-spare-parts-bg {
-  position: absolute;
-  inset: 0;
   background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, var(--color-dark) 100%),
     url("images/spare_parts_hero.jpg") center/cover no-repeat;
-  z-index: 0;
 }
 
 .hero-inner--spare-parts {
@@ -338,28 +320,15 @@ a.logo {
   gap: 8px;
 }
 
-.hero-title--spare-parts .hero-line {
-  font-size: clamp(1.75rem, 4vw, 3rem);
+.hero-content .primary-cta {
+  align-self: center;
 }
 
-.hero-line--sub {
-  font-size: clamp(1.35rem, 3vw, 2.25rem) !important;
+.hero-line {
+  font-size: clamp(1.35rem, 4vw, 4rem) !important;
   font-weight: 700;
-  opacity: 0.95;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 32px;
-  font-family: var(--font);
-  font-size: 1rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  letter-spacing: 0.6px;
+  line-height: 1.5;
 }
 
 .btn--primary {
@@ -780,11 +749,11 @@ a.logo {
 
 .parts-title {
   font-size: clamp(1.5rem, 3vw, 2.25rem);
-  font-weight: 800;
+  font-weight: 600;
   color: var(--color-primary);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.6px;
   margin-bottom: 48px;
-  text-align: left;
+  text-align: center;
 }
 
 /* Parts carousel: single large slide, dark theme */
@@ -1075,7 +1044,7 @@ a.logo {
   border-bottom-color: var(--color-primary);
 }
 
-.contact-submit {
+.primary-cta {
   align-self: flex-start;
   padding: 14px 32px;
   font-family: var(--font);
