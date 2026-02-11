@@ -143,14 +143,56 @@
   }
 })();
 
+// Initialize Swiper after library and DOM loads
+function initSwiper() {
+  if (typeof Swiper === 'undefined') {
+    setTimeout(initSwiper, 100);
+    return;
+  }
 
-const swiper = new Swiper('.swiper', {
-  loop: true,
-  slidesPerView: 4,
-  spaceBetween: 20,
-  centeredSlides: true,
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-})
+  const swiperElement = document.querySelector('.collection .swiper');
+  if (!swiperElement) {
+    setTimeout(initSwiper, 100);
+    return;
+  }
+
+  new Swiper('.collection .swiper', {
+    loop: true,
+    slidesPerView: 4,
+    spaceBetween: 20,
+    centeredSlides: true,
+    navigation: {
+      nextEl: '.collection .swiper-button-next',
+      prevEl: '.collection .swiper-button-prev',
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      640: {
+        slidesPerView: 2,
+        spaceBetween: 15,
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+      },
+      1920: {
+        slidesPerView: 6,
+        spaceBetween: 20,
+      },
+    },
+  });
+}
+
+// Wait for DOM to be ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSwiper);
+} else {
+  initSwiper();
+}
