@@ -545,6 +545,50 @@ a.logo {
 }
 
 /* ===== Collection ===== */
+
+
+.container {
+  max-width: 900px;
+  padding: 0 30px;
+	margin-inline: auto;
+}
+
+.swiper {
+  position: relative;
+	width: 600px;
+	margin-inline: auto;
+}
+
+.swiper img {
+	max-width: 100%;
+}
+
+.swiper::before {
+  content: "";
+  position: absolute;
+  top: -70px;
+  left: -10%;
+  width: 120%;
+  height: 100px;
+  background: var(--color-gray-light);
+  border-radius: 100%;
+  z-index: 100;
+}
+
+.swiper::after {
+  content: "";
+  position: absolute;
+  bottom: -60px;
+  left: -10%;
+  width: 120%;
+  height: 100px;
+  background: var(--color-gray-light);
+  border-radius: 100%;
+  z-index: 1000;
+}
+
+
+
 .collection {
   position: relative;
   padding: 80px 24px 80px 80px;

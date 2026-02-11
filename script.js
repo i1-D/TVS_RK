@@ -1,5 +1,7 @@
+
 (function () {
   'use strict';
+
 
   // ----- Collection slider (scroll-snap) -----
   var collectionCarousel = document.querySelector('.carousel--collection');
@@ -140,3 +142,15 @@
     updateActiveNav();
   }
 })();
+
+
+const swiper = new Swiper('.swiper', {
+  loop: true,
+  slidesPerView: 4,
+  spaceBetween: 20,
+  centeredSlides: true,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+})

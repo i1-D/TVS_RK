@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
 </head>
 <body class="page-home">
   <!-- Header (loaded from partial) -->
@@ -90,34 +91,20 @@
       <span class="section-num">03</span>
     </div>
     <h2 class="collection-title">The Ultimate Collection</h2>
-    <div class="carousel carousel--collection">
-      <button type="button" class="carousel-btn carousel-btn--prev" aria-label="Previous slide">‹</button>
-      <div class="carousel-viewport" tabindex="0">
-        <div class="carousel-track">
-          <div class="carousel-slide" data-index="0">
-            <img src="https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=400&q=80" alt="TVS Product">
-            <span class="carousel-caption">OWN YOUR THRILL</span>
-          </div>
-          <div class="carousel-slide" data-index="1">
-            <img src="https://images.unsplash.com/photo-1558981359-219d6364c9c8?w=400&q=80" alt="TVS Product">
-            <span class="carousel-caption">OWN YOUR THRILL</span>
-          </div>
-          <div class="carousel-slide" data-index="2">
-            <img src="https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=400&q=80" alt="TVS Product">
-            <span class="carousel-caption">OWN YOUR THRILL</span>
-          </div>
-          <div class="carousel-slide" data-index="3">
-            <img src="https://images.unsplash.com/photo-1558981359-219d6364c9c8?w=400&q=80" alt="TVS Product">
-            <span class="carousel-caption">OWN YOUR THRILL</span>
-          </div>
-          <div class="carousel-slide" data-index="4">
-            <img src="https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=400&q=80" alt="TVS Product">
-            <span class="carousel-caption">OWN YOUR THRILL</span>
-          </div>
-        </div>
+    <div class="swiper">
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt=""></div>
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80" alt=""></div>
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt=""></div>
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1434394354979-a235cd36269d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1451&q=80" alt=""></div>
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1458668383970-8ddd3927deed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1467&q=80" alt=""></div>
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1444065707204-12decac917e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80" alt=""></div>
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt=""></div>
       </div>
-      <button type="button" class="carousel-btn carousel-btn--next" aria-label="Next slide">›</button>
-    </div>
+    </div> 
+  </div>
     <p class="collection-desc">
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid
     </p>
@@ -128,5 +115,6 @@
 
   <script src="include.js"></script>
   <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 </body>
 </html>
