@@ -217,9 +217,9 @@ a.logo {
 .scroll-indicator-dot-inner {
   width: 12px;
   height: 12px;
-  border-radius: 50%;
   background: rgba(193, 39, 44, 0.3);
   border: 2px solid rgba(193, 39, 44, 0.3);
+  transform: rotate(45deg);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   flex-shrink: 0;
@@ -239,18 +239,18 @@ a.logo {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 4px rgba(193, 39, 44, 0.2),
               0 0 20px rgba(193, 39, 44, 0.4);
-  transform: scale(1);
+  transform: rotate(45deg) scale(1);
   animation: pulse 2s ease-in-out infinite;
 }
 
 @keyframes pulse {
   0%, 100% {
-    transform: scale(1);
+    transform: rotate(45deg) scale(1);
     box-shadow: 0 0 0 4px rgba(193, 39, 44, 0.2),
                 0 0 20px rgba(193, 39, 44, 0.4);
   }
   50% {
-    transform: scale(1.1);
+    transform: rotate(45deg) scale(1.1);
     box-shadow: 0 0 0 6px rgba(193, 39, 44, 0.15),
                 0 0 30px rgba(193, 39, 44, 0.5);
   }
