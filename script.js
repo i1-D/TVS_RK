@@ -2,6 +2,135 @@
 (function () {
   'use strict';
 
+  // ----- Mobile Menu Toggle -----
+  function initMobileMenu() {
+    var menuToggle = document.querySelector('.menu-toggle');
+    var nav = document.querySelector('.nav');
+    
+    if (!menuToggle || !nav) {
+      // Retry if header not loaded yet
+      setTimeout(initMobileMenu, 100);
+      return;
+    }
+
+    // Check if already initialized
+    if (menuToggle.hasAttribute('data-initialized')) {
+      return;
+    }
+    
+    menuToggle.setAttribute('data-initialized', 'true');
+    menuToggle.setAttribute('aria-expanded', 'false');
+
+    var navLinks = document.querySelectorAll('.nav-link');
+
+    function toggleMenu() {
+      var isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      nav.classList.toggle('menu-open');
+      
+      // Prevent body scroll when menu is open
+      if (!isExpanded) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+
+    function closeMenu() {
+      menuToggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('menu-open');
+      document.body.style.overflow = '';
+    }
+
+    menuToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMenu();
+    });
+    
+    // Close menu when clicking on a nav link
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        closeMenu();
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (nav.classList.contains('menu-open') && 
+          !nav.contains(event.target) && 
+          !menuToggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    // Close menu on window resize if it's larger than mobile
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 900) {
+        closeMenu();
+      }
+    });
+
+    // Close menu on scroll
+    window.addEventListener('scroll', function() {
+      if (nav.classList.contains('menu-open')) {
+        closeMenu();
+      }
+    });
+  }
+
+  // Initialize menu - multiple strategies to catch header loading
+  function tryInitMenu() {
+    var menuToggle = document.querySelector('.menu-toggle');
+    var nav = document.querySelector('.nav');
+    
+    if (menuToggle && nav && !menuToggle.hasAttribute('data-initialized')) {
+      initMobileMenu();
+      return true;
+    }
+    return false;
+  }
+
+  // Strategy 1: Try immediately
+  tryInitMenu();
+
+  // Strategy 2: After DOMContentLoaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(tryInitMenu, 100);
+    });
+  }
+
+  // Strategy 3: Watch for header insertion via MutationObserver
+  var headerObserver = new MutationObserver(function(mutations) {
+    tryInitMenu();
+  });
+
+  // Observe document body for header insertion
+  if (document.body) {
+    headerObserver.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      headerObserver.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+    });
+  }
+
+  // Strategy 4: Periodic check as fallback (stops after 3 seconds)
+  var attempts = 0;
+  var maxAttempts = 30; // 30 attempts * 100ms = 3 seconds
+  var checkInterval = setInterval(function() {
+    attempts++;
+    if (tryInitMenu() || attempts >= maxAttempts) {
+      clearInterval(checkInterval);
+    }
+  }, 100);
+
 
   // ----- Collection slider (scroll-snap) -----
   var collectionCarousel = document.querySelector('.carousel--collection');
@@ -322,32 +451,37 @@ function initSwiper() {
 
   new Swiper('.collection .swiper', {
     loop: true,
-    slidesPerView: 4,
-    spaceBetween: 20,
+    slidesPerView: 1,
+    spaceBetween: 10,
     centeredSlides: true,
     navigation: {
       nextEl: '.collection .swiper-button-next',
       prevEl: '.collection .swiper-button-prev',
     },
     breakpoints: {
-      320: {
+      // Mobile: up to 480px (default: 1 slide)
+      480: {
         slidesPerView: 1,
-        spaceBetween: 10,
+        spaceBetween: 12,
       },
-      640: {
+      // Small tablets: 481px - 600px
+      600: {
         slidesPerView: 2,
         spaceBetween: 15,
       },
-      768: {
+      // Tablets: 601px - 900px
+      900: {
         slidesPerView: 3,
-        spaceBetween: 20,
+        spaceBetween: 18,
       },
-      1024: {
+      // Small desktops: 901px - 1200px
+      1200: {
         slidesPerView: 4,
         spaceBetween: 20,
       },
+      // Large desktops: 1201px - 1920px
       1920: {
-        slidesPerView: 6,
+        slidesPerView: 5,
         spaceBetween: 20,
       },
     },
