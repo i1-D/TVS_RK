@@ -1527,38 +1527,48 @@ a.logo {
   .home-hero-visual {
     order: 2;
     position: relative;
-    bottom: auto;
+    bottom: -30px;
     right: auto;
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     width: 100%;
+    overflow: visible;
   }
 
   .hero-image-wrap {
-    max-width: 100%;
-    width: 100%;
+    max-width: none;
+    width: 130%;
+    margin-left: -15%;
+    margin-right: -15%;
+    overflow: visible;
   }
 
   .hero-image {
     width: 100%;
     height: auto;
+    display: block;
   }
 
   .hero-visual--services {
     order: 2;
     position: relative;
-    bottom: auto;
+    bottom: -20px;
+    left: -30px;
     right: auto;
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     width: 100%;
+    overflow: visible;
   }
 
   .hero-visual--services .hero-image-wrap {
-    max-width: 100%;
-    width: 100%;
+    max-width: none;
+    width: 130%;
+    margin-left: -15%;
+    margin-right: -15%;
+    overflow: visible;
   }
 
   .hero--services {
@@ -2048,18 +2058,41 @@ a.logo {
 
   .home-hero-visual {
     order: 2;
-    margin-top: 40px;
+    margin-top: 20px;
+    bottom: -30px;
     width: 100%;
     display: flex;
     justify-content: center;
+    overflow: visible;
+    position: relative;
+  }
+
+  .hero-image-wrap {
+    max-width: none;
+    width: 130%;
+    margin-left: -15%;
+    margin-right: -15%;
+    overflow: visible;
   }
 
   .hero-visual--services {
     order: 2;
-    margin-top: 40px;
+    margin-top: 20px;
+    bottom: -20px;
+    left: -30px;
     width: 100%;
     display: flex;
     justify-content: center;
+    overflow: visible;
+    position: relative;
+  }
+
+  .hero-visual--services .hero-image-wrap {
+    max-width: none;
+    width: 130%;
+    margin-left: -15%;
+    margin-right: -15%;
+    overflow: visible;
   }
 
   .hero--services {
@@ -2286,18 +2319,41 @@ a.logo {
 
   .home-hero-visual {
     order: 2;
-    margin-top: 50px;
+    margin-top: 20px;
+    bottom: -30px;
     width: 100%;
     display: flex;
     justify-content: center;
+    overflow: visible;
+    position: relative;
+  }
+
+  .hero-image-wrap {
+    max-width: none;
+    width: 130%;
+    margin-left: -15%;
+    margin-right: -15%;
+    overflow: visible;
   }
 
   .hero-visual--services {
     order: 2;
-    margin-top: 40px;
+    margin-top: 20px;
+    bottom: -20px;
+    left: -30px;
     width: 100%;
     display: flex;
     justify-content: center;
+    overflow: visible;
+    position: relative;
+  }
+
+  .hero-visual--services .hero-image-wrap {
+    max-width: none;
+    width: 130%;
+    margin-left: -15%;
+    margin-right: -15%;
+    overflow: visible;
   }
 
   .hero--services {
