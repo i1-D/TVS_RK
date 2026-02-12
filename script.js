@@ -325,26 +325,50 @@
       }
     });
 
-    // Update line progress - fill from top to active dot
+    // Update line progress
     if (scrollIndicatorLine && scrollIndicatorDots.length > 0) {
       var totalDots = scrollIndicatorDots.length;
       var progressPercent = ((activeIndex + 1) / totalDots) * 100;
       
-      // Calculate position of active dot
-      var activeDot = scrollIndicatorDots[activeIndex];
-      if (activeDot) {
-        var dotRect = activeDot.getBoundingClientRect();
-        var indicatorRect = document.querySelector('.scroll-indicator').getBoundingClientRect();
-        var dotPosition = ((dotRect.top + dotRect.height / 2) - indicatorRect.top) / indicatorRect.height;
-        progressPercent = Math.max(0, Math.min(100, dotPosition * 100));
-      }
+      // Check if mobile (horizontal layout)
+      var isMobile = window.innerWidth <= 900;
       
-      scrollIndicatorLine.style.background = 
-        `linear-gradient(to bottom, 
-          var(--color-primary) 0%, 
-          var(--color-primary) ${progressPercent}%, 
-          rgba(193, 39, 44, 0.2) ${progressPercent}%, 
-          rgba(193, 39, 44, 0.2) 100%)`;
+      if (isMobile) {
+        // Horizontal line: fill from left to right
+        var activeDot = scrollIndicatorDots[activeIndex];
+        if (activeDot) {
+          var dotsContainer = document.querySelector('.scroll-indicator-dots');
+          if (dotsContainer) {
+            var containerRect = dotsContainer.getBoundingClientRect();
+            var dotRect = activeDot.getBoundingClientRect();
+            var dotPosition = ((dotRect.left + dotRect.width / 2) - containerRect.left) / containerRect.width;
+            progressPercent = Math.max(0, Math.min(100, dotPosition * 100));
+          }
+        }
+        
+        scrollIndicatorLine.style.background = 
+          `linear-gradient(to right, 
+            var(--color-primary) 0%, 
+            var(--color-primary) ${progressPercent}%, 
+            rgba(193, 39, 44, 0.2) ${progressPercent}%, 
+            rgba(193, 39, 44, 0.2) 100%)`;
+      } else {
+        // Vertical line: fill from top to bottom
+        var activeDot = scrollIndicatorDots[activeIndex];
+        if (activeDot) {
+          var indicatorRect = document.querySelector('.scroll-indicator').getBoundingClientRect();
+          var dotRect = activeDot.getBoundingClientRect();
+          var dotPosition = ((dotRect.top + dotRect.height / 2) - indicatorRect.top) / indicatorRect.height;
+          progressPercent = Math.max(0, Math.min(100, dotPosition * 100));
+        }
+        
+        scrollIndicatorLine.style.background = 
+          `linear-gradient(to bottom, 
+            var(--color-primary) 0%, 
+            var(--color-primary) ${progressPercent}%, 
+            rgba(193, 39, 44, 0.2) ${progressPercent}%, 
+            rgba(193, 39, 44, 0.2) 100%)`;
+      }
     }
   }
 
@@ -451,38 +475,43 @@ function initSwiper() {
 
   new Swiper('.collection .swiper', {
     loop: true,
-    slidesPerView: 1,
-    spaceBetween: 10,
+    slidesPerView: 'auto',
+    spaceBetween: 12,
     centeredSlides: true,
     navigation: {
       nextEl: '.collection .swiper-button-next',
       prevEl: '.collection .swiper-button-prev',
     },
     breakpoints: {
-      // Mobile: up to 480px (default: 1 slide)
+      // Mobile: up to 480px - show 3 slides (1 centered, 1 partial left, 1 partial right)
       480: {
-        slidesPerView: 1,
+        slidesPerView: 1.15,
         spaceBetween: 12,
+        centeredSlides: true,
       },
-      // Small tablets: 481px - 600px
+      // Small tablets: 481px - 600px - show 3 slides with partial visibility
       600: {
-        slidesPerView: 2,
+        slidesPerView: 1.3,
         spaceBetween: 15,
+        centeredSlides: true,
       },
-      // Tablets: 601px - 900px
+      // Tablets: 601px - 900px - show 3 slides with partial visibility
       900: {
-        slidesPerView: 3,
+        slidesPerView: 1.5,
         spaceBetween: 18,
+        centeredSlides: true,
       },
       // Small desktops: 901px - 1200px
       1200: {
         slidesPerView: 4,
         spaceBetween: 20,
+        centeredSlides: true,
       },
       // Large desktops: 1201px - 1920px
       1920: {
         slidesPerView: 5,
         spaceBetween: 20,
+        centeredSlides: true,
       },
     },
   });

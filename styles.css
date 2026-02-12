@@ -356,12 +356,7 @@ a.logo {
   transform: scale(1.1);
 }
 
-/* Hide on mobile */
-@media (max-width: 768px) {
-  .scroll-indicator {
-    display: none;
-  }
-}
+/* Mobile: Horizontal scroll indicator at bottom - handled in main mobile media query below */
 
 /* ===== Section indicator (red line + numbers) ===== */
 .hero-section-indicator,
@@ -714,8 +709,8 @@ a.logo {
 }
 
 .services-scooter {
-  width: 140%;
-  height: 140%;
+  width: 180%;
+  height: 180%;
   object-fit: cover;
   transform: rotate(-45deg);
 }
@@ -754,6 +749,65 @@ a.logo {
   position: relative;
 	width: 100%;
 	margin-inline: auto;
+	overflow: visible;
+}
+
+.collection .swiper {
+  padding: 0 var(--padding-horizontal);
+}
+
+@media (max-width: 900px) {
+  .collection {
+    overflow-x: visible !important;
+    overflow-y: visible;
+    position: relative;
+    width: 100%;
+  }
+
+  .collection .swiper {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    overflow: visible;
+    position: relative;
+  }
+
+  .collection .swiper-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .collection .swiper-slide {
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .collection .swiper-slide {
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .collection .swiper-slide img {
+    width: 240px;
+    max-width: 240px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  .swiper::before {
+    display: block !important;
+    top: -50px;
+    height: 80px;
+  }
+
+  .swiper::after {
+    display: block !important;
+    bottom: -50px;
+    height: 80px;
+  }
 }
 
 .swiper img {
@@ -1423,10 +1477,6 @@ a.logo {
     background: rgba(255,255,255,0.1);
   }
 
-  .scroll-indicator {
-    display: none;
-  }
-
   /* Prevent horizontal overflow */
   body {
     overflow-x: hidden;
@@ -1549,41 +1599,50 @@ a.logo {
   }
 
   .services-diagonal {
+    height: 50%;
     width: 100%;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    opacity: 0.1;
+    clip-path: polygon(50% 0, 100% 50%, 100% 100%, 0 100%, 0% 50%);
   }
 
   .services-inner {
-    grid-template-columns: 1fr;
-    gap: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     width: 100%;
   }
 
   .services-left {
     padding-left: 0;
     width: 100%;
+    order: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .services-list {
     gap: 16px;
+    align-items: center;
+    text-align: center;
   }
 
   .services-list li {
     font-size: 1.5rem;
     word-wrap: break-word;
+    text-align: center;
   }
 
   .services-center {
     width: 100%;
     display: flex;
     justify-content: center;
-    order: -1;
+    order: 2;
   }
 
   .services-diamond {
     transform: rotate(0deg);
-    max-width: 200px;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
   }
 
@@ -1595,12 +1654,22 @@ a.logo {
 
   .services-right {
     padding-right: 0;
-    text-align: left;
+    text-align: center;
     width: 100%;
+    order: 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    align-items: center;
+    justify-items: center;
   }
 
   .services-right .stat {
-    text-align: left;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
   }
 
   .stat-value {
@@ -1612,8 +1681,16 @@ a.logo {
   }
 
   .collection {
-    padding: 40px var(--padding-horizontal);
-    overflow: hidden;
+    padding: 40px 0;
+    overflow: visible;
+  }
+
+  .collection-title {
+    padding: 0 var(--padding-horizontal);
+  }
+
+  .collection-desc {
+    padding: 0 var(--padding-horizontal);
   }
 
   .collection-title {
@@ -1630,11 +1707,33 @@ a.logo {
   .swiper {
     width: 100%;
     padding: 0;
+    overflow: visible;
   }
 
-  .swiper::before,
+  .swiper::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: -10%;
+    width: 120%;
+    height: 80px;
+    background: var(--color-gray-light);
+    border-radius: 100%;
+    z-index: 100;
+    display: block !important;
+  }
+
   .swiper::after {
-    display: none;
+    content: "";
+    position: absolute;
+    bottom: -50px;
+    left: -10%;
+    width: 120%;
+    height: 80px;
+    background: var(--color-gray-light);
+    border-radius: 100%;
+    z-index: 1000;
+    display: block !important;
   }
 
   .swiper-button-prev,
@@ -1642,6 +1741,12 @@ a.logo {
     width: 36px;
     height: 36px;
     font-size: 1.2rem;
+  }
+
+  .collection {
+    overflow: visible;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .offer {
@@ -1901,9 +2006,6 @@ a.logo {
   }
 }
 
-  .scroll-indicator {
-    left: 16px;
-  }
 
   .hero {
     padding: calc(var(--header-height) + 40px) var(--padding-horizontal) 0;
@@ -1972,12 +2074,45 @@ a.logo {
   }
 
   .services-inner {
-    grid-template-columns: 1fr;
-    gap: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .services-left {
+    order: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .services-list {
+    text-align: center;
+    align-items: center;
   }
 
   .services-list li {
     font-size: 2rem;
+    text-align: center;
+  }
+
+  .services-center {
+    order: 2;
+  }
+
+  .services-right {
+    order: 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    text-align: center;
+  }
+
+  .services-right .stat {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .offer-grid {
@@ -1987,7 +2122,16 @@ a.logo {
   }
 
   .collection {
-    padding: 50px var(--padding-horizontal);
+    padding: 50px 0;
+    overflow: visible;
+  }
+
+  .collection-title {
+    padding: 0 var(--padding-horizontal);
+  }
+
+  .collection-desc {
+    padding: 0 var(--padding-horizontal);
   }
 
   .contact-section {
@@ -2100,9 +2244,6 @@ a.logo {
   }
 }
 
-  .scroll-indicator {
-    left: 20px;
-  }
 
   .hero {
     padding: calc(var(--header-height) + 50px) var(--padding-horizontal) 0;
@@ -2171,27 +2312,68 @@ a.logo {
   }
 
   .services-inner {
-    grid-template-columns: 1fr;
-    gap: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .services-diagonal {
+    height: 50%;
     width: 100%;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    opacity: 0.12;
+    clip-path: polygon(50% 0, 100% 50%, 100% 100%, 0 100%, 0% 50%);
+    bottom: 0;
+    left: 0;
+    top: unset;
   }
 
   .services-left {
     padding-left: 0;
+    order: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .services-list {
+    text-align: center;
+    align-items: center;
+  }
+
+  .services-list li {
+    text-align: center;
+  }
+
+  .services-center {
+    order: 2;
   }
 
   .services-right {
     padding-right: 0;
-    text-align: left;
+    text-align: center;
+    order: 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .services-right .stat {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .collection {
-    padding: 60px var(--padding-horizontal);
+    padding: 60px 0;
+    overflow: visible;
+  }
+
+  .collection-title {
+    padding: 0 var(--padding-horizontal);
+  }
+
+  .collection-desc {
+    padding: 0 var(--padding-horizontal);
   }
 
   .offer {
@@ -2315,7 +2497,8 @@ a.logo {
   }
 
   .services-diagonal {
-    width: 50%;
+    height: 50%;
+    width: 100%;
   }
 
   .offer-grid {
@@ -2357,7 +2540,7 @@ a.logo {
   }
 
   .services-diagonal {
-    width: 40%;
+    height: 50%;
   }
 
   .collection {
@@ -2432,16 +2615,128 @@ a.logo {
 
 /* Swiper responsive adjustments */
 @media (max-width: 600px) {
-  .swiper::before,
+  .swiper {
+    overflow: visible;
+  }
+
+  .swiper::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: -10%;
+    width: 120%;
+    height: 50px;
+    background: var(--color-gray-light);
+    border-radius: 100%;
+    z-index: 100;
+    display: block !important;
+  }
+
   .swiper::after {
-    display: none;
+    content: "";
+    position: absolute;
+    bottom: -30px;
+    left: -10%;
+    width: 120%;
+    height: 50px;
+    background: var(--color-gray-light);
+    border-radius: 100%;
+    z-index: 1000;
+    display: block !important;
+  }
+
+  .collection {
+    overflow: visible;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .collection .swiper-slide img {
+    width: 200px;
+    max-width: 200px;
+    height: auto;
   }
 }
 
-/* Hide scroll indicator on mobile */
-@media (max-width: 768px) {
+/* Mobile: Horizontal scroll indicator at bottom */
+@media (max-width: 900px) {
   .scroll-indicator {
-    display: none;
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    top: auto;
+    right: auto;
+    transform: translateX(-50%);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    display: flex !important;
+    z-index: 1000;
+  }
+
+  .scroll-indicator.hidden {
+    transform: translateX(-50%) translateY(calc(100% + 20px));
+    opacity: 0;
+  }
+
+  .scroll-indicator-dots {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 40px;
+    padding: 12px 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+  }
+
+  .scroll-indicator-line {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    right: 20px;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+    transform: translateY(-50%);
+    background: rgba(193, 39, 44, 0.2);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .scroll-indicator-dot {
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .scroll-indicator-number {
+    font-size: 0.75rem;
+    text-align: left;
+    line-height: 1;
+  }
+
+  .scroll-indicator-dot-inner {
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+  }
+
+  .scroll-indicator-dot.active .scroll-indicator-dot-inner {
+    width: 14px;
+    height: 14px;
+  }
+
+  .scroll-indicator-dot.active .scroll-indicator-number {
+    font-size: 0.8rem;
   }
 }
 
@@ -2451,6 +2746,12 @@ a.logo {
   * {
     max-width: 100%;
     box-sizing: border-box;
+  }
+
+  .collection .swiper-slide img {
+    width: 180px;
+    max-width: 180px;
+    height: auto;
   }
 
   .logo-tagline {
