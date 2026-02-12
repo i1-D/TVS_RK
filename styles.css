@@ -144,6 +144,135 @@ a.logo {
   color: var(--color-white);
 }
 
+/* ===== Fixed Scroll Indicator ===== */
+.scroll-indicator {
+  position: fixed;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-indicator.hidden {
+  transform: translateY(-50%) translateX(-100%);
+  opacity: 0;
+}
+
+.scroll-indicator-line {
+  position: absolute;
+  left: 6px;
+  top: 20px;
+  bottom: 20px;
+  width: 2px;
+  background: rgba(193, 39, 44, 0.2);
+  transition: background 0.3s ease;
+  z-index: 0;
+}
+
+.scroll-indicator-dots {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  align-items: flex-start;
+  z-index: 1;
+  padding-left: 0;
+}
+
+.scroll-indicator-dot {
+  position: relative;
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-indicator-dot:hover {
+  transform: scale(1.1);
+}
+
+.scroll-indicator-number {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: rgba(193, 39, 44, 0.6);
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), font-weight 0.3s ease;
+  z-index: 2;
+  line-height: 1;
+  min-width: 24px;
+  text-align: left;
+}
+
+.scroll-indicator-dot-inner {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(193, 39, 44, 0.3);
+  border: 2px solid rgba(193, 39, 44, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.scroll-indicator-dot.active .scroll-indicator-number {
+  color: var(--color-primary);
+  transform: scale(1.15);
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.scroll-indicator-dot.active .scroll-indicator-dot-inner {
+  width: 16px;
+  height: 16px;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(193, 39, 44, 0.2),
+              0 0 20px rgba(193, 39, 44, 0.4);
+  transform: scale(1);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px rgba(193, 39, 44, 0.2),
+                0 0 20px rgba(193, 39, 44, 0.4);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 6px rgba(193, 39, 44, 0.15),
+                0 0 30px rgba(193, 39, 44, 0.5);
+  }
+}
+
+.scroll-indicator-dot:hover .scroll-indicator-dot-inner {
+  background: rgba(193, 39, 44, 0.6);
+  border-color: rgba(193, 39, 44, 0.6);
+}
+
+.scroll-indicator-dot:hover .scroll-indicator-number {
+  color: rgba(193, 39, 44, 0.9);
+  transform: scale(1.1);
+}
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+  .scroll-indicator {
+    display: none;
+  }
+}
+
 /* ===== Section indicator (red line + numbers) ===== */
 .hero-section-indicator,
 .services-section-indicator,

@@ -141,6 +141,170 @@
     window.addEventListener('scroll', updateActiveNav);
     updateActiveNav();
   }
+
+  // ----- Fixed Scroll Indicator -----
+  var scrollIndicatorDots = document.querySelectorAll('.scroll-indicator-dot');
+  var scrollIndicatorLine = document.querySelector('.scroll-indicator-line');
+  
+  // Detect sections based on available dots
+  function getSectionsForPage() {
+    var sections = [];
+    scrollIndicatorDots.forEach(function (dot) {
+      var sectionName = dot.getAttribute('data-section');
+      if (sectionName) {
+        var section = document.querySelector('.' + sectionName);
+        if (section) {
+          sections.push(section);
+        }
+      }
+    });
+    return sections;
+  }
+  
+  var scrollSections = getSectionsForPage();
+
+  function updateScrollIndicator() {
+    if (!scrollIndicatorDots.length || !scrollSections.length) return;
+
+    var scrollY = window.scrollY || window.pageYOffset;
+    var windowHeight = window.innerHeight;
+    var documentHeight = document.documentElement.scrollHeight;
+    var scrollPercent = scrollY / (documentHeight - windowHeight);
+
+    // Find active section
+    var activeIndex = 0;
+    var headerOffset = 80;
+    var threshold = windowHeight * 0.3;
+
+    scrollSections.forEach(function (section, index) {
+      var rect = section.getBoundingClientRect();
+      var sectionTop = rect.top + scrollY;
+      var sectionMiddle = sectionTop + rect.height / 2;
+
+      if (scrollY + headerOffset + threshold >= sectionTop && 
+          scrollY + headerOffset + threshold < sectionTop + rect.height) {
+        activeIndex = index;
+      }
+    });
+
+    // Update active dot
+    scrollIndicatorDots.forEach(function (dot, index) {
+      if (index === activeIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+
+    // Update line progress - fill from top to active dot
+    if (scrollIndicatorLine && scrollIndicatorDots.length > 0) {
+      var totalDots = scrollIndicatorDots.length;
+      var progressPercent = ((activeIndex + 1) / totalDots) * 100;
+      
+      // Calculate position of active dot
+      var activeDot = scrollIndicatorDots[activeIndex];
+      if (activeDot) {
+        var dotRect = activeDot.getBoundingClientRect();
+        var indicatorRect = document.querySelector('.scroll-indicator').getBoundingClientRect();
+        var dotPosition = ((dotRect.top + dotRect.height / 2) - indicatorRect.top) / indicatorRect.height;
+        progressPercent = Math.max(0, Math.min(100, dotPosition * 100));
+      }
+      
+      scrollIndicatorLine.style.background = 
+        `linear-gradient(to bottom, 
+          var(--color-primary) 0%, 
+          var(--color-primary) ${progressPercent}%, 
+          rgba(193, 39, 44, 0.2) ${progressPercent}%, 
+          rgba(193, 39, 44, 0.2) 100%)`;
+    }
+  }
+
+  // Click handler for scroll indicator dots
+  scrollIndicatorDots.forEach(function (dot, index) {
+    dot.addEventListener('click', function () {
+      var section = scrollSections[index];
+      if (section) {
+        var headerOffset = 80;
+        var sectionTop = section.offsetTop - headerOffset;
+        window.scrollTo({
+          top: sectionTop,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  if (scrollIndicatorDots.length && scrollSections.length) {
+    window.addEventListener('scroll', updateScrollIndicator);
+    window.addEventListener('resize', updateScrollIndicator);
+    updateScrollIndicator();
+  }
+
+  // ----- Hide scroll indicator when footer is in view -----
+  var scrollIndicator = document.querySelector('.scroll-indicator');
+  var footerObserver = null;
+
+  function checkFooterVisibility() {
+    if (!scrollIndicator) return;
+    
+    var footer = document.querySelector('.footer');
+    if (!footer) return;
+
+    var footerRect = footer.getBoundingClientRect();
+    var windowHeight = window.innerHeight;
+    
+    // Hide indicator when footer enters viewport (when top of footer is visible)
+    if (footerRect.top < windowHeight) {
+      scrollIndicator.classList.add('hidden');
+    } else {
+      scrollIndicator.classList.remove('hidden');
+    }
+  }
+
+  function initFooterObserver() {
+    if (!scrollIndicator) return;
+    
+    var footer = document.querySelector('.footer');
+    if (!footer) {
+      // Retry if footer not loaded yet (loaded via include.js)
+      setTimeout(initFooterObserver, 100);
+      return;
+    }
+
+    // Use Intersection Observer if available
+    if ('IntersectionObserver' in window && !footerObserver) {
+      footerObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            scrollIndicator.classList.add('hidden');
+          } else {
+            scrollIndicator.classList.remove('hidden');
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0 // Trigger as soon as footer enters viewport
+      });
+      
+      footerObserver.observe(footer);
+    } else {
+      // Fallback: check on scroll
+      window.addEventListener('scroll', checkFooterVisibility);
+      window.addEventListener('resize', checkFooterVisibility);
+      checkFooterVisibility();
+    }
+  }
+
+  // Initialize footer observer
+  if (scrollIndicator) {
+    // Wait a bit for include.js to load footer
+    setTimeout(function() {
+      initFooterObserver();
+      // Also check on scroll as backup
+      window.addEventListener('scroll', checkFooterVisibility);
+    }, 300);
+  }
 })();
 
 // Initialize Swiper after library and DOM loads

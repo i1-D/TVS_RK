@@ -11,16 +11,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
 </head>
 <body class="page-home">
+  <!-- Fixed Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-indicator-line"></div>
+    <div class="scroll-indicator-dots">
+      <div class="scroll-indicator-dot active" data-section="hero">
+        <div class="scroll-indicator-dot-inner"></div>
+        <span class="scroll-indicator-number">00</span>
+      </div>
+      <div class="scroll-indicator-dot" data-section="services">
+        <div class="scroll-indicator-dot-inner"></div>
+        <span class="scroll-indicator-number">01</span>
+      </div>
+      <div class="scroll-indicator-dot" data-section="collection">
+        <div class="scroll-indicator-dot-inner"></div>
+        <span class="scroll-indicator-number">02</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Header (loaded from partial) -->
   <div data-include="partials/header.html"></div>
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-section-indicator">
-      <span class="section-num">00</span>
-      <div class="section-line"></div>
-      <span class="section-num">01</span>
-    </div>
     <div class="hero-content">
       <h1 class="hero-title">
         Rated Best TVS <br>
@@ -48,11 +62,6 @@
 
   <!-- Services Section -->
   <section class="services">
-    <div class="services-section-indicator">
-      <span class="section-num">01</span>
-      <div class="section-line"></div>
-      <span class="section-num">02</span>
-    </div>
     <div class="services-diagonal"></div>
     <div class="services-inner">
       <div class="services-left">
@@ -87,11 +96,6 @@
 
   <!-- Collection Section -->
   <section class="collection">
-    <div class="collection-section-indicator">
-      <span class="section-num">02</span>
-      <div class="section-line"></div>
-      <span class="section-num">03</span>
-    </div>
     <h2 class="collection-title">The Ultimate Collection</h2>
     <div class="swiper">
       <div class="swiper-button-prev"></div>

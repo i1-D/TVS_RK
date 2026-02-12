@@ -10,16 +10,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Fixed Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-indicator-line"></div>
+    <div class="scroll-indicator-dots">
+      <div class="scroll-indicator-dot active" data-section="hero">
+        <div class="scroll-indicator-dot-inner"></div>
+        <span class="scroll-indicator-number">00</span>
+      </div>
+      <div class="scroll-indicator-dot" data-section="parts-section">
+        <div class="scroll-indicator-dot-inner"></div>
+        <span class="scroll-indicator-number">01</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Header (loaded from partial) -->
   <div data-include="partials/header.html"></div>
 
   <!-- Spare Parts Hero -->
   <section class="hero hero--spare-parts">
-    <div class="hero-section-indicator">
-      <span class="section-num">00</span>
-      <div class="section-line"></div>
-      <span class="section-num">01</span>
-    </div>
     <div class="hero-content hero-content--spare-parts">
       <h1 class="hero-title hero-title--spare-parts">
         <span class="hero-line">Built for Performance</span>

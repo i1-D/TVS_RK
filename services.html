@@ -10,16 +10,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Fixed Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-indicator-line"></div>
+    <div class="scroll-indicator-dots">
+      <div class="scroll-indicator-dot active" data-section="hero">
+        <div class="scroll-indicator-dot-inner"></div>
+        <span class="scroll-indicator-number">00</span>
+      </div>
+      <div class="scroll-indicator-dot" data-section="offer">
+        <div class="scroll-indicator-dot-inner"></div>
+        <span class="scroll-indicator-number">01</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Header (loaded from partial) -->
   <div data-include="partials/header.html"></div>
 
   <!-- Services Hero -->
   <section class="hero hero--services">
-    <div class="hero-section-indicator">
-      <span class="section-num">00</span>
-      <div class="section-line"></div>
-      <span class="section-num">01</span>
-    </div>
     <div class="hero-content">
       <h1 class="hero-title">
         Expert Hands <br>
@@ -37,11 +47,6 @@
 
   <!-- What We Offer -->
   <section class="offer">
-    <div class="offer-section-indicator">
-      <span class="section-num">01</span>
-      <div class="section-line"></div>
-      <span class="section-num">02</span>
-    </div>
     <div class="offer-inner">
       <h2 class="offer-title">What We Offer</h2>
       <p class="offer-lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
