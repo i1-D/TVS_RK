@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
 </head>
 <body>
   <!-- Fixed Scroll Indicator -->
@@ -46,31 +47,26 @@
     <div class="parts-grid" aria-hidden="true"></div>
     <div class="parts-inner">
       <h2 class="parts-title">Explore Our Range of Genuine Parts</h2>
-      <div class="carousel carousel--parts">
-        <button type="button" class="carousel-btn carousel-btn--prev" aria-label="Previous slide">‹</button>
-        <div class="carousel-track">
-          <div class="carousel-slide">
+      <div class="swiper swiper--parts">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
             <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Engine parts">
           </div>
-          <div class="carousel-slide">
+          <div class="swiper-slide">
             <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80" alt="Motorcycle brake system">
           </div>
-          <div class="carousel-slide">
+          <div class="swiper-slide">
             <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Vehicle components">
           </div>
-          <div class="carousel-slide">
+          <div class="swiper-slide">
             <img src="https://images.unsplash.com/photo-1558981359-219d6364c9c8?w=800&q=80" alt="TVS motorcycle">
           </div>
         </div>
-        <button type="button" class="carousel-btn carousel-btn--next" aria-label="Next slide">›</button>
+        <button type="button" class="swiper-button-prev" aria-label="Previous slide"></button>
+        <button type="button" class="swiper-button-next" aria-label="Next slide"></button>
+        <div class="swiper-pagination"></div>
       </div>
       <p class="parts-desc">Don't settle for aftermarket imitations. Protect your investment with factory-certified parts designed for a perfect fit and uncompromising durability, every single time.</p>
-      <div class="carousel-dots" role="tablist" aria-label="Carousel slides">
-        <button type="button" class="carousel-dot" role="tab" aria-label="Slide 1" data-index="0"></button>
-        <button type="button" class="carousel-dot" role="tab" aria-label="Slide 2" data-index="1"></button>
-        <button type="button" class="carousel-dot" role="tab" aria-label="Slide 3" data-index="2"></button>
-        <button type="button" class="carousel-dot" role="tab" aria-label="Slide 4" data-index="3"></button>
-      </div>
     </div>
   </section>
 
@@ -78,6 +74,7 @@
   <div data-include="partials/footer.html"></div>
 
   <script src="include.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

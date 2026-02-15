@@ -1133,9 +1133,9 @@ a.logo {
     padding-right: 0;
     margin-left: 0;
     margin-right: 0;
-    -webkit-transition-timing-function: ease-in-out;
-    -o-transition-timing-function: ease-in-out;
-    transition-timing-function: ease-in-out;
+    -webkit-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;
   }
 
   .collection .swiper-slide {
@@ -1505,6 +1505,99 @@ a.logo {
 
 .carousel-dot.active {
   opacity: 1;
+  transform: scale(1.2);
+}
+
+/* Parts section: Swiper (1 slide, nav buttons, pagination dots) */
+.parts-section .swiper--parts {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto 24px;
+  overflow: hidden;
+}
+
+/* No decorative ::before/::after on parts slider */
+.parts-section .swiper--parts::before,
+.parts-section .swiper--parts::after {
+  display: none !important;
+  content: none !important;
+}
+
+.parts-section .swiper--parts .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.parts-section .swiper--parts .swiper-slide img {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+  object-fit: cover;
+}
+
+.parts-section .swiper-button-prev,
+.parts-section .swiper-button-next {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.4);
+  background: rgba(0,0,0,0.3);
+  color: var(--color-white);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+/* Swiper 12 uses SVG for arrows – size the icon to half of the button */
+.parts-section .swiper-button-prev svg,
+.parts-section .swiper-button-next svg {
+  width: 24px;
+  height: 24px;
+}
+
+.parts-section .swiper-button-prev:hover,
+.parts-section .swiper-button-next:hover {
+  background: var(--color-red);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.parts-section .swiper-pagination {
+  position: relative !important;
+  margin-top: 20px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  min-height: 14px;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.parts-section .swiper-pagination .swiper-pagination-bullets {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.parts-section .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  opacity: 0.6;
+  transition: opacity 0.2s, transform 0.2s, background 0.2s;
+}
+
+.parts-section .swiper-pagination-bullet:hover {
+  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.parts-section .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: var(--color-primary);
   transform: scale(1.2);
 }
 
@@ -2309,33 +2402,35 @@ a.logo {
     margin-bottom: 32px;
   }
 
-  .carousel--parts {
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
-  }
-
-  .carousel--parts .carousel-track {
-    min-height: 240px;
-  }
-
-  .carousel--parts .carousel-slide {
+  .parts-section .swiper--parts {
     max-width: 100%;
   }
 
-  .carousel--parts .carousel-slide img {
-    width: 100%;
+  .parts-section .swiper--parts .swiper-slide img {
+    max-width: 100%;
     height: auto;
+  }
+
+  .parts-section .swiper-button-prev,
+  .parts-section .swiper-button-next {
+    width: 40px;
+    height: 40px;
+  }
+
+  .parts-section .swiper-button-prev svg,
+  .parts-section .swiper-button-next svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .parts-section .swiper-pagination {
+    margin-top: 16px;
   }
 
   .parts-desc {
     font-size: 0.85rem;
     padding: 0 10px;
     margin-bottom: 24px;
-  }
-
-  .carousel-dots {
-    gap: 10px;
   }
 }
 
