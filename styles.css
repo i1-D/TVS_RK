@@ -1125,6 +1125,7 @@ a.logo {
     width: 100%;
     overflow: visible;
     position: relative;
+    margin: 32px 0;
   }
 
   .collection .swiper-wrapper {
@@ -1132,6 +1133,9 @@ a.logo {
     padding-right: 0;
     margin-left: 0;
     margin-right: 0;
+    -webkit-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
   }
 
   .collection .swiper-slide {
@@ -2061,7 +2065,7 @@ a.logo {
 
   .collection-title {
     font-size: clamp(1.5rem, 7vw, 2rem);
-    margin-bottom: 32px;
+    margin-bottom: 0px;
   }
 
   .collection-desc {

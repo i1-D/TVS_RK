@@ -492,6 +492,12 @@ function initSwiper() {
     slidesPerView: 'auto',
     spaceBetween: 12,
     centeredSlides: true,
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: false,
+    },
+    speed: 3000,
     navigation: {
       nextEl: '.collection .swiper-button-next',
       prevEl: '.collection .swiper-button-prev',
