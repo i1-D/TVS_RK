@@ -194,6 +194,20 @@
     });
   }
 
+  // ----- What We Offer: flip cards on click -----
+  var serviceCards = document.querySelectorAll('.offer .service-card');
+  serviceCards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      card.classList.toggle('flipped');
+    });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.classList.toggle('flipped');
+      }
+    });
+  });
+
   // ----- Other carousels (e.g. parts: single active slide) -----
   var track = document.querySelector('.carousel--parts .carousel-track');
   var slides = document.querySelectorAll('.carousel--parts .carousel-slide');
