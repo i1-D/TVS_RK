@@ -1639,6 +1639,8 @@ a.logo {
   :root {
     --padding-horizontal: 20px;
     --header-height: 70px;
+    --color-radial-gradient : radial-gradient(80% 40% at 50% 70%, #1F1E1E 12.26%, #0B0A0B 53.37%, #070707 69.23%, #010101 100%);
+    --color-radial-footer : radial-gradient(80% 40% at 50% 20%, #1F1E1E 8.38%, #0B0A0B 53.37%, #070707 69.23%, #010101 100%);
   }
 
   .header {
