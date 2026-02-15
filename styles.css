@@ -718,7 +718,7 @@ a.logo {
   /* Desktop (900px+): Restore commit layout */
 @media (min-width: 900px) {
   .services-scooter {
-    width: 100%;
+    width: 40vw;
     height: 100%;
   }
 
@@ -753,8 +753,11 @@ a.logo {
 
   /* Services section - restore desktop layout */
   .services {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding-top: 80px;
-    padding-bottom: 0;
+    padding-bottom: 80px;
     min-height: 85vh;
     overflow: visible;
   }
@@ -775,6 +778,8 @@ a.logo {
     display: block;
     justify-content: flex-start;
     align-items: flex-start;
+    min-width: 0;
+    z-index: 2;
   }
 
   .services-list {
@@ -784,15 +789,17 @@ a.logo {
   }
 
   .services-list li {
-    font-size: 2.5rem;
+    font-size: clamp(1.35rem, 2vw, 2.25rem);
     word-wrap: normal;
     text-align: left;
+    white-space: nowrap;
   }
 
   .services-center {
     width: auto;
     display: flex;
     justify-content: center;
+    align-items: center;
     order: 0;
   }
 
@@ -2945,14 +2952,18 @@ a.logo {
   }
 
   .services {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 80px var(--padding-horizontal);
+    padding-bottom: 80px;
     min-height: 85vh;
     overflow: visible;
   }
 
   .services-inner {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 3fr auto 1fr;
     gap: 0px;
     flex-direction: row;
     align-items: center;
@@ -2966,6 +2977,7 @@ a.logo {
     display: block;
     justify-content: flex-start;
     align-items: flex-start;
+    min-width: 0;
   }
 
   .services-list {
@@ -2975,15 +2987,17 @@ a.logo {
   }
 
   .services-list li {
-    font-size: 2.5rem;
+    font-size: clamp(1.35rem, 2vw, 2.25rem);
     word-wrap: normal;
     text-align: left;
+    white-space: nowrap;
   }
 
   .services-center {
     width: auto;
     display: flex;
     justify-content: center;
+    align-items: center;
     order: 0;
   }
 
@@ -3263,17 +3277,20 @@ a.logo {
   }
 
   .services {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding-left: 10.417vw;
     padding-right: 10.417vw;
     padding-top: 80px;
-    padding-bottom: 0;
+    padding-bottom: 80px;
     min-height: 85vh;
     overflow: visible;
   }
 
   .services-inner {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 3fr auto 1fr;
     gap: 0px;
     flex-direction: row;
     align-items: center;
@@ -3287,6 +3304,7 @@ a.logo {
     display: block;
     justify-content: flex-start;
     align-items: flex-start;
+    min-width: 0;
   }
 
   .services-list {
@@ -3296,15 +3314,17 @@ a.logo {
   }
 
   .services-list li {
-    font-size: 2.5rem;
+    font-size: clamp(1.35rem, 2vw, 2.25rem);
     word-wrap: normal;
     text-align: left;
+    white-space: nowrap;
   }
 
   .services-center {
     width: auto;
     display: flex;
     justify-content: center;
+    align-items: center;
     order: 0;
   }
 
@@ -3576,14 +3596,6 @@ a.logo {
     align-items: center;
     justify-content: flex-start;
     padding-bottom: 0;
-  }
-
-  .services-inner,
-  .offer-inner,
-  .parts-inner,
-  .contact-inner {
-    max-width: var(--max-width);
-    margin: 0 auto;
   }
 
   /* Offer section - restore desktop layout */
