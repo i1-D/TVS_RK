@@ -131,69 +131,6 @@
     }
   }, 100);
 
-
-  // ----- Collection slider (scroll-snap) -----
-  var collectionCarousel = document.querySelector('.carousel--collection');
-  var viewport = collectionCarousel ? collectionCarousel.querySelector('.carousel-viewport') : null;
-  var collectionSlides = collectionCarousel ? collectionCarousel.querySelectorAll('.carousel-slide') : [];
-  var btnPrev = document.querySelector('.carousel--collection .carousel-btn--prev');
-  var btnNext = document.querySelector('.carousel--collection .carousel-btn--next');
-
-  function getSlideWidth(slide) {
-    if (!slide) return 220;
-    var style = window.getComputedStyle(slide);
-    var width = parseFloat(style.width) || 220;
-    var gap = 20;
-    var track = slide.closest('.carousel-track');
-    if (track) {
-      var trackStyle = window.getComputedStyle(track);
-      gap = parseFloat(trackStyle.gap) || 20;
-    }
-    return width + gap;
-  }
-
-  function scrollCollection(direction) {
-    if (!viewport || !collectionSlides.length) return;
-    var step = getSlideWidth(collectionSlides[0]);
-    viewport.scrollBy({ left: direction * step, behavior: 'smooth' });
-  }
-
-  function updateCollectionActiveFromScroll() {
-    if (!viewport || !collectionSlides.length) return;
-    var vw = viewport.getBoundingClientRect().width;
-    var vLeft = viewport.scrollLeft;
-    var center = vLeft + vw / 2;
-    var best = 0;
-    var bestDist = Infinity;
-    collectionSlides.forEach(function (slide, i) {
-      var r = slide.getBoundingClientRect();
-      var slideCenter = r.left - viewport.getBoundingClientRect().left + r.width / 2 + viewport.scrollLeft;
-      var dist = Math.abs(center - slideCenter);
-      if (dist < bestDist) {
-        bestDist = dist;
-        best = i;
-      }
-    });
-    collectionSlides.forEach(function (slide, i) {
-      slide.classList.toggle('carousel-slide--active', i === best);
-    });
-  }
-
-  if (viewport && collectionSlides.length) {
-    viewport.addEventListener('scroll', updateCollectionActiveFromScroll);
-    if ('onscrollend' in viewport) {
-      viewport.addEventListener('scrollend', updateCollectionActiveFromScroll);
-    }
-    setTimeout(updateCollectionActiveFromScroll, 100);
-    if (btnPrev) btnPrev.addEventListener('click', function () { scrollCollection(-1); });
-    if (btnNext) btnNext.addEventListener('click', function () { scrollCollection(1); });
-    collectionSlides.forEach(function (slide) {
-      slide.addEventListener('click', function () {
-        slide.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      });
-    });
-  }
-
   // ----- What We Offer: flip cards on click -----
   var serviceCards = document.querySelectorAll('.offer .service-card');
   serviceCards.forEach(function (card) {
