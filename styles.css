@@ -40,6 +40,8 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 a {
@@ -147,8 +149,9 @@ a.logo {
 
 .logo-img {
   display: block;
-  height: 55px;
-  width: auto;
+  height: 55px !important;
+  width: auto !important;
+  max-height: 55px !important;
   object-fit: contain;
 }
 
@@ -1674,7 +1677,8 @@ a.logo {
   }
 
   .logo-img {
-    height: 45px;
+    height: 45px !important;
+    max-height: 45px !important;
   }
 
   .menu-toggle {
@@ -3571,6 +3575,18 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Optimize lazy-loaded images */
+img[loading="lazy"] {
+  content-visibility: auto;
+}
+
+/* Prevent layout shift - browser will use width/height attributes */
+img[width][height] {
+  height: auto;
 }
 
 /* Prevent horizontal scroll */
