@@ -5,12 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RK TVS Authorized Service Centre</title>
   <link rel="icon" type="image/svg+xml" href="images/logo.svg">
-  <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"></noscript>
   <link rel="preload" as="image" href="images/home_hero.avif" fetchpriority="high">
+  <script>
+    // Async CSS loading helper
+    function loadCSS(href) {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      document.head.appendChild(link);
+    }
+    // Fallback for async CSS if onload doesn't fire
+    window.addEventListener('load', function() {
+      var asyncLinks = document.querySelectorAll('link[media="print"]');
+      asyncLinks.forEach(function(link) {
+        if (link.media === 'print') {
+          link.media = 'all';
+        }
+      });
+    });
+  </script>
 </head>
 <body class="page-home">
   <!-- Fixed Scroll Indicator -->
@@ -123,8 +143,8 @@
   <!-- Footer (loaded from partial) -->
   <div data-include="partials/footer.html"></div>
 
-  <script src="include.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-  <script src="script.js"></script>
+  <script src="include.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

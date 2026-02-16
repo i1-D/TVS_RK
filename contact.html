@@ -5,10 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us - RK TVS Authorized Service Centre</title>
   <link rel="icon" type="image/svg+xml" href="images/logo.svg">
-  <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    window.addEventListener('load', function() {
+      var asyncLinks = document.querySelectorAll('link[media="print"]');
+      asyncLinks.forEach(function(link) {
+        if (link.media === 'print') {
+          link.media = 'all';
+        }
+      });
+    });
+  </script>
 </head>
 <body>
   <!-- Header (loaded from partial) -->
@@ -50,7 +61,7 @@
   <!-- Footer (loaded from partial) -->
   <div data-include="partials/footer.html"></div>
 
-  <script src="include.js"></script>
-  <script src="script.js"></script>
+  <script src="include.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
