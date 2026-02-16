@@ -627,6 +627,13 @@ a.logo {
   transform: rotateY(180deg);
 }
 
+/* Desktop: flip on hover */
+@media (hover: hover) {
+  .service-card:hover .service-card-inner {
+    transform: rotateY(180deg);
+  }
+}
+
 .service-card-front,
 .service-card-back {
   position: absolute;

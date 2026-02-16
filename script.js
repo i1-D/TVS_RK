@@ -131,16 +131,27 @@
     }
   }, 100);
 
-  // ----- What We Offer: flip cards on click -----
+  // ----- What We Offer: flip on hover (desktop) or click (mobile) -----
   var serviceCards = document.querySelectorAll('.offer .service-card');
   serviceCards.forEach(function (card) {
-    card.addEventListener('click', function () {
+    card.addEventListener('click', function (e) {
+      if (window.matchMedia('(hover: hover)').matches) return;
+      serviceCards.forEach(function (other) {
+        if (other !== card) other.classList.remove('flipped');
+      });
       card.classList.toggle('flipped');
     });
     card.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        card.classList.toggle('flipped');
+        if (window.matchMedia('(hover: hover)').matches) {
+          card.classList.toggle('flipped');
+        } else {
+          serviceCards.forEach(function (other) {
+            if (other !== card) other.classList.remove('flipped');
+          });
+          card.classList.toggle('flipped');
+        }
       }
     });
   });
