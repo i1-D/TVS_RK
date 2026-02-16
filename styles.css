@@ -515,7 +515,7 @@ a.logo {
   justify-content: center;
   text-align: center;
   background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, var(--color-dark) 100%),
-    url("images/spare_parts_hero.jpg") center/cover no-repeat;
+    url("images/spare_parts_hero.avif") center/cover no-repeat;
 }
 
 .hero-inner--spare-parts {
