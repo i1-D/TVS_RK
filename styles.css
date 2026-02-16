@@ -656,7 +656,7 @@ a.logo {
 
 .service-card-desc {
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--color-gray);
   line-height: 1.5;
   margin: 0;
@@ -2011,24 +2011,33 @@ a.logo {
     width: 100%;
     box-sizing: border-box;
     min-width: 0;
-    min-height: 160px;
+    min-height: 230px;
   }
 
   .service-card-inner {
-    min-height: 160px;
+    min-height: 230px;
   }
 
   .service-card-front,
   .service-card-back {
     padding: 20px 16px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
   }
 
   .service-card-back {
     padding: 18px 14px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    justify-content: center;
+    align-items: center;
   }
 
   .service-card-desc {
     font-size: 0.8rem;
+    line-height: 1.45;
+    margin: 0;
   }
 
   .service-card-icon {
@@ -3504,6 +3513,16 @@ a.logo {
   * {
     max-width: 100%;
     box-sizing: border-box;
+  }
+
+  .service-card,
+  .service-card-inner {
+    min-height: 230px;
+  }
+
+  .service-card-back {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .collection .swiper-slide img {
