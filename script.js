@@ -386,8 +386,8 @@ function initSwiper() {
       speed: 5000,
       autoplay: {
         delay: 0,
-        disableOnInteraction: true,
-        pauseOnMouseEnter: true,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: false,
       },
       navigation: {
         nextEl: '.collection .swiper-button-next',
