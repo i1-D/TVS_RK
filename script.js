@@ -145,6 +145,38 @@
     });
   });
 
+  // ----- Services page only: auto-flip first offer card once when section is in view, flip back after 5s -----
+  (function initOfferFirstCardAutoplay() {
+    var servicesPageHero = document.querySelector('.hero--services');
+    var offerSection = document.querySelector('.offer');
+    var firstCard = document.querySelector('.offer .service-card');
+    if (!servicesPageHero || !offerSection || !firstCard) return;
+
+    var FLIP_BACK_DELAY_MS = 2000;
+    var flipBackTimeout = null;
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.target !== offerSection || !entry.isIntersecting) return;
+          if (offerSection.getAttribute('data-first-card-autoplay') === 'done') return;
+
+          offerSection.setAttribute('data-first-card-autoplay', 'done');
+          firstCard.classList.add('flipped');
+
+          if (flipBackTimeout) clearTimeout(flipBackTimeout);
+          flipBackTimeout = setTimeout(function () {
+            firstCard.classList.remove('flipped');
+            flipBackTimeout = null;
+          }, FLIP_BACK_DELAY_MS);
+        });
+      },
+      { threshold: 0.2, rootMargin: '0px' }
+    );
+
+    observer.observe(offerSection);
+  })();
+
   // ----- Services section: animate stats when section comes into view -----
   (function initStatsCounter() {
     var servicesSection = document.querySelector('.services');
