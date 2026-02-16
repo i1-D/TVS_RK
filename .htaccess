@@ -1,0 +1,33 @@
+# Cache Control Headers for Better Performance
+
+# Images - Cache for 1 year (immutable)
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+  Header set Cache-Control "public, max-age=2592000, immutable"
+</FilesMatch>
+
+# CSS and JavaScript - Cache for 1 year (immutable)
+<FilesMatch "\.(css|js)$">
+  Header set Cache-Control "public, max-age=2592000, immutable"
+</FilesMatch>
+
+# Fonts - Cache for 1 year (immutable)
+<FilesMatch "\.(woff|woff2|ttf|eot|otf)$">
+  Header set Cache-Control "public, max-age=2592000, immutable"
+</FilesMatch>
+
+# HTML - Cache for 1 hour, must revalidate
+<FilesMatch "\.(html|htm)$">
+  Header set Cache-Control "public, max-age=2592000, must-revalidate"
+</FilesMatch>
+
+# Enable compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "DENY"
+  Header set X-XSS-Protection "1; mode=block"
+</IfModule>

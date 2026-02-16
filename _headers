@@ -1,0 +1,33 @@
+# Netlify Headers Configuration
+# Cache Control for Static Assets
+
+# Images - Cache for 1 year
+/images/*
+  Cache-Control: public, max-age=2592000, immutable
+
+# CSS and JS - Cache for 1 year
+/*.css
+  Cache-Control: public, max-age=2592000, immutable
+
+/*.js
+  Cache-Control: public, max-age=2592000, immutable
+
+# Fonts - Cache for 1 year
+/*.woff
+  Cache-Control: public, max-age=2592000, immutable
+
+/*.woff2
+  Cache-Control: public, max-age=2592000, immutable
+
+/*.ttf
+  Cache-Control: public, max-age=2592000, immutable
+
+# HTML - Cache for 1 hour
+/*.html
+  Cache-Control: public, max-age=2592000, must-revalidate
+
+# Security headers
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
