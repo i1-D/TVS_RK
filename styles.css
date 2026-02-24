@@ -1121,6 +1121,15 @@ a.logo {
   padding: 0 var(--padding-horizontal);
 }
 
+.collection .swiper-slide img {
+  height: 300px !important;
+  min-height: 300px;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  display: block;
+}
+
 @media (max-width: 900px) {
   .collection {
     overflow-x: visible !important;
@@ -1159,9 +1168,10 @@ a.logo {
   }
 
   .collection .swiper-slide img {
-    width: 240px;
-    max-width: 240px;
-    height: auto;
+    height: 300px !important;
+    min-height: 300px;
+    max-height: none;
+    width: auto;
     display: block;
     object-fit: contain;
   }
@@ -3453,9 +3463,10 @@ a.logo {
   }
 
   .collection .swiper-slide img {
-    width: 200px;
-    max-width: 200px;
-    height: auto;
+    width: auto;
+    height: 300px !important;
+    min-height: 300px;
+    max-height: none;
   }
 }
 
@@ -3560,9 +3571,15 @@ a.logo {
   }
 
   .collection .swiper-slide img {
-    width: 180px;
-    max-width: 180px;
-    height: auto;
+    width: auto;
+    height: 200px !important;
+    min-height: 200px;
+    max-height: none;
+  }
+
+  .collection .swiper-slide img[width][height] {
+    height: 200px !important;
+    min-height: 200px;
   }
 
   .logo-tagline {
@@ -3587,6 +3604,12 @@ img[loading="lazy"] {
 /* Prevent layout shift - browser will use width/height attributes */
 img[width][height] {
   height: auto;
+}
+
+/* Collection slider: keep fixed height (override img[width][height]) */
+.collection .swiper-slide img[width][height] {
+  height: 300px !important;
+  min-height: 300px;
 }
 
 /* Prevent horizontal scroll */

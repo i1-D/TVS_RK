@@ -504,7 +504,7 @@ function initSwiper() {
       centeredSlides: true,
       freeMode: true,
       freeModeMomentum: true,
-      speed: 5000,
+      speed: 10000,
       autoplay: {
         delay: 0,
         disableOnInteraction: false,
@@ -515,11 +515,11 @@ function initSwiper() {
         prevEl: '.collection .swiper-button-prev',
       },
       breakpoints: {
-        480: { slidesPerView: 1.15, spaceBetween: 12 },
-        600: { slidesPerView: 1.3, spaceBetween: 15},
-        900: { slidesPerView: 1.5, spaceBetween: 18},
-        1200: { slidesPerView: 4, spaceBetween: 20},
-        1920: { slidesPerView: 5, spaceBetween: 20},
+        480: { slidesPerView: 1.5, spaceBetween: 20 },
+        600: { slidesPerView: 1.5, spaceBetween: 12 },
+        900: { slidesPerView: 1.5, spaceBetween: 12 },
+        1200: { slidesPerView: 2, spaceBetween: 16 },
+        1920: { slidesPerView: 2.8, spaceBetween: 8 },
       },
     });
   }
